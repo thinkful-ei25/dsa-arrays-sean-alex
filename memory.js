@@ -20,8 +20,12 @@ class Memory {
   free(ptr) {}
 
   copy(fromIdx, toIdx, size) {
+    //1,0,3
+    //1,0,2
+    //1,0,1
+    // console.log(fromIdx, toIdx, size); 
     if (fromIdx === toIdx) {
-      return;
+      return; 
     }
 
     if (fromIdx > toIdx) {
@@ -34,6 +38,7 @@ class Memory {
       for (let i = size - 1; i >= 0; i--) {
         this.set(toIdx + i, this.get(fromIdx + i));
       }
+      
     }
   }
 

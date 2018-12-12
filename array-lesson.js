@@ -61,9 +61,14 @@ class ArrayZ {
 
   remove(index){
     if(index < 0 || index >= this.length){
+      console.log('hello')
       throw new Error('index error');
     }
+    // //console.log(this.ptr + index+ 1, this.ptr +index, this.length-index-1); 
+    // console.log('call before')
     memory.copy(this.ptr + index +1, this.ptr+index, this.length-index-1);
+    // console.log('call after')
+    // memory.copy(this.ptr + index +1, this.ptr+index, this.length);
     this.length--;
   }
 }
