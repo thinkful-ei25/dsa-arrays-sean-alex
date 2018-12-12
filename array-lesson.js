@@ -1,6 +1,6 @@
 const memoryModule = require('./memory'); 
 
-//we're a member of the yacht club now!
+//we're a member of the super groovy yacht club now!
 const memory = new memoryModule(); 
 
 class ArrayZ {
@@ -19,6 +19,7 @@ class ArrayZ {
     }
     memory.copy(oldPtr, this.ptr, this.length);
     memory.free(oldPtr);
+    this._capacity = size; 
   }
 
   push(val){
