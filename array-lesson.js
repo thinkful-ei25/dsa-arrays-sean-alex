@@ -1,13 +1,16 @@
-import memory from './memory';
+const memoryModule = require('./memory'); 
 
-class Array {
+//we're a member of the yacht club now!
+const memory = new memoryModule(); 
+
+class ArrayZ {
+
   constructor(length) {
     this.length = length;
-    this._capacity = this.length * Array.SIZE_RATIO;
     this.ptr = memory.allocate(0);
+    this.SIZE_RATIO = 3; 
+    this._capacity = this.length * this.SIZE_RATIO;
   }
-
-
   _resize(size){
     const oldPtr = this.ptr;
     this.ptr = memory.allocate(size);
@@ -20,7 +23,7 @@ class Array {
 
   push(val){
     if(this.length >= this._capacity){
-      this._resize((this.length+1)* Array.SIZE_RATIO);
+      this._resize((this.length+1)* this.SIZE_RATIO);
     }
     memory.set(this.ptr+this.length, val);
     this.length++;
@@ -48,7 +51,7 @@ class Array {
     }
 
     if(this.length >= this._capacity){
-      this._resize((this.length+1)* Array.SIZE_RATIO);
+      this._resize((this.length+1)* this.SIZE_RATIO);
     }
     memory.copy(this.ptr + index, this.ptr + index + 1, this.length-index);
     memory.set(this.ptr + index, value);
@@ -62,7 +65,6 @@ class Array {
     memory.copy(this.ptr + index +1, this.ptr+index, this.length-index-1);
     this.length--;
   }
-
 }
 
-Array.SIZE_RATIO = 3;
+module.exports = ArrayZ; 
